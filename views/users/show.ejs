@@ -1,0 +1,19 @@
+<h2><%= user.first_name + ' ' + user.last_name %></h2>
+
+<h3>Personal Number</h3>
+<p><%= user.personal_number %></p>
+
+<h3>Account Number</h3>
+<p><%= user.account_number %></p>
+
+<h3>Date of birth</h3>
+<p><%= user.date_of_birth.toDateString() %></p>
+
+<h3>City</h3>
+<p><%= user.city %></p>
+
+<h3>Account created at</h3>
+<p><%= user.createdAt.toDateString() %></p>
+
+<a href="/users/<%= user.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/users/${user.id}` }) %>

@@ -1,0 +1,6 @@
+<h2>Users in the bank</h2>
+<% users.forEach(user => { %>
+<div><%= user.first_name + ' ' + user.last_name %></div>
+<a href="/users/<%= user.id %>">View</a>
+<a href="/users/<%= user.id %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/users/${user.id}` }) %> <% }) %>
