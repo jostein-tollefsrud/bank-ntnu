@@ -1,12 +1,3 @@
-<!-- <label for="name">Name</label>
-<input
-    type="text"
-    name="name"
-    id="name"
-    value="<%=
-user.name %>"
-/> -->
-
 <!-- First name -->
 <div>
     <label for="first_name">First Name</label>
@@ -15,6 +6,7 @@ user.name %>"
         name="first_name"
         id="first_name"
         value="<%= user.first_name %>"
+        required
     />
 </div>
 
@@ -26,6 +18,7 @@ user.name %>"
         name="last_name"
         id="last_name"
         value="<%= user.last_name %>"
+        required
     />
 </div>
 
@@ -36,14 +29,22 @@ user.name %>"
         type="date"
         name="date_of_birth"
         id="date_of_birth"
+        min="1910-01-01"
         value="<%= user.date_of_birth == null ? '' : user.date_of_birth.toISOString().split('T')[0] %>"
+        required
     />
 </div>
 
 <!-- City -->
 <div>
     <label for="city">City</label>
-    <input type="text" name="city" id="city" value="<%= user.city %>" />
+    <input
+        type="text"
+        name="city"
+        id="city"
+        value="<%= user.city %>"
+        required
+    />
 </div>
 
 <!-- Personal number -->
@@ -54,5 +55,8 @@ user.name %>"
         name="personal_number"
         id="personal_number"
         value="<%= user.personal_number %>"
+        pattern="[0-9]{11}"
+        title="Only numbers, max 11 digits long"
+        required
     />
 </div>

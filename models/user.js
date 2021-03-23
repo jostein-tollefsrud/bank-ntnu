@@ -9,6 +9,12 @@ const userSchema = new mongoose.Schema(
         },
         account_number: {
             type: Number,
+            default: function () {
+                // Generate 16 digits random number
+                return (number = Math.floor(
+                    Math.random() * 8999999999 + 10000000000
+                ));
+            },
         },
         first_name: {
             type: String,

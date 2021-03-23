@@ -23,7 +23,6 @@ router.get('/new', (req, res) => {
 router.post('/', async (req, res) => {
     const user = new User({
         personal_number: req.body.personal_number,
-        account_number: 1212121212,
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         date_of_birth: req.body.date_of_birth,
