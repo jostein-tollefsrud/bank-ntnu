@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
     });
     try {
         const newUser = await user.save();
-        res.redirect(`/users/${newUser.id}`);
+        res.redirect(`/users/${newUser.personal_number}`);
     } catch {
         res.render('users/new', {
             user: user,
@@ -40,9 +40,12 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:personal_number', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        // const user = await User.findById(req.params.personal_number);
+        const user = await User.findOne({
+            personal_number: req.params.personal_number,
+        });
         res.render('users/show', {
             user: user,
         });
@@ -51,22 +54,28 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/:id/edit', async (req, res) => {
+router.get('/:personal_number/edit', async (req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        // const user = await User.findById(req.params.id);
+        const user = await User.findOne({
+            personal_number: req.params.personal_number,
+        });
         res.render('users/edit', { user: user });
     } catch {
         res.redirect('/users');
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:personal_number', async (req, res) => {
     let user;
     try {
-        user = await User.findById(req.params.id);
+        // user = await User.findById(req.params.id);
+        const user = await User.findOne({
+            personal_number: req.params.personal_number,
+        });
         user.first_name = req.body.first_name;
         await user.save();
-        res.redirect(`/users/${user.id}`);
+        res.redirect(`/users/${user.personal_number}`);
     } catch {
         if (user == null) {
             res.redirect('/');
@@ -79,10 +88,13 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:personal_number', async (req, res) => {
     let user;
     try {
-        user = await User.findById(req.params.id);
+        // user = await User.findById(req.params.id);
+        const user = await User.findOne({
+            personal_number: req.params.personal_number,
+        });
         await user.remove();
         res.redirect(`/users`);
     } catch {

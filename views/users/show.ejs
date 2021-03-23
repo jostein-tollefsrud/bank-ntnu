@@ -7,13 +7,14 @@
 <p><%= user.account_number %></p>
 
 <h3>Date of birth</h3>
-<p><%= user.date_of_birth.toDateString() %></p>
+<p><%= user.date_of_birth %></p>
 
 <h3>City</h3>
 <p><%= user.city %></p>
 
 <h3>Account created at</h3>
-<p><%= user.createdAt.toDateString() %></p>
+<p><%= user.createdAt %></p>
 
-<a href="/users/<%= user.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', { url: `/users/${user.id}` }) %>
+<a href="/users/<%= user.personal_number %>/edit">Edit</a>
+<%- include('../partials/deleteForm', { url: `/users/${user.personal_number}` })
+%>

@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema(
         personal_number: {
             type: String,
             required: true,
+            unique: true,
         },
         account_number: {
             type: Number,
